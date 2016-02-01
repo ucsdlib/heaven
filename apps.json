@@ -1,0 +1,14 @@
+{
+  "dmr": {
+    "provider": "capistrano",
+    "auto_merge": false,
+    "repository": "ucsdlib/dmr",
+    "environments": ["pontos"]
+  },
+  "deploybot": {
+    "provider": "capistrano",
+    "auto_merge": false,
+    "repository": "ucsdlib/deploybot",
+    "environments": ["pontos"]
+  }
+}
