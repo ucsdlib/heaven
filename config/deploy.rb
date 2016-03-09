@@ -13,7 +13,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
 # set :linked_dirs, %w{config/environments}
-set :linked_files, %w{config/secrets.yml config/database.yml}
+# set :linked_files, %w{config/secrets.yml config/database.yml}
 
 namespace :deploy do
 
