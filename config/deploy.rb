@@ -30,8 +30,7 @@ namespace :deploy do
     on roles(:app) do
       test "source /home/conan/.bashrc && \
         cd /pub/deploybot/current && \
-        forever stop $(cat #{shared_path}/pids/hubot.pid)"
-      execute "sudo kill $(cat #{shared_path}/pids/hubot.pid)"
+        sudo kill $(cat #{shared_path}/pids/hubot.pid)"
     end
   end
 
