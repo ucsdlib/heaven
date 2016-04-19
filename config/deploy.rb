@@ -17,7 +17,7 @@ namespace :deploy do
     on roles(:app) do
       execute "if [ -e #{log_file} ]; then echo \"\n\nDeployment #{release_timestamp}\n\" >> #{log_file}; fi"
       # Start Hubot!
-      execute "source /home/deploy/.bashrc && \
+      execute "source /home/conan/.bashrc && \
         cd #{release_path} && \
         forever start -p #{shared_path} --pidFile #{shared_path}/pids/hubot.pid -a -l #{shared_path}/log/hubot.log -c coffee node_modules/.bin/hubot -a slack -d"
     end
@@ -26,7 +26,7 @@ namespace :deploy do
   desc "Stop Hubot"
   task :stop do
     on roles(:app) do
-      test "source /home/deploy/.bashrc && \
+      test "source /home/conan/.bashrc && \
         cd /pub/deploybot/current && \
         forever stop $(cat #{shared_path}/pids/hubot.pid)"
     end
