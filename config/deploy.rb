@@ -13,13 +13,15 @@ namespace :deploy do
   desc "Sets up the log file, then sources EnvVars & starts Hubot"
   task :start do
     log_file = "#{shared_path}/log/hubot.log"
+    pid_file = "#{shared_path}/pids/hubot.pid"
     # If we've got a log file already, mark that a deployment occurred
     on roles(:app) do
       execute "if [ -e #{log_file} ]; then echo \"\n\nDeployment #{release_timestamp}\n\" >> #{log_file}; fi"
       # Start Hubot!
       execute "source /home/conan/.bashrc && \
         cd #{release_path} && \
-        forever start -p #{shared_path} --pidFile #{shared_path}/pids/hubot.pid -a -l #{shared_path}/log/hubot.log -c coffee node_modules/.bin/hubot -a slack -d"
+        bin/hubot --adapter slack > #{log_file} 2>&1 &"
+      execute "ps -aef | grep -v grep | grep deploybot | awk '{print $2}' >> #{pid_file}"
     end
   end
 
@@ -29,6 +31,7 @@ namespace :deploy do
       test "source /home/conan/.bashrc && \
         cd /pub/deploybot/current && \
         forever stop $(cat #{shared_path}/pids/hubot.pid)"
+      execute "sudo kill $(cat #{shared_path}/pids/hubot.pid)"
     end
   end
 
