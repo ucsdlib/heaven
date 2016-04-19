@@ -35,7 +35,7 @@ namespace :deploy do
   desc "Install necessary Node modules, then move them to the correct path"
   task :npm_install do
     on roles(:app) do
-      execute "cd #{release_path} && npm install forever -g"
+      execute "cd #{release_path} && npm install"
     end
   end
 
