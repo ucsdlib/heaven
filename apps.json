@@ -5,6 +5,12 @@
     "repository": "ucsdlib/dmr",
     "environments": ["pontos","staging","production"]
   },
+  "billing-ill": {
+    "provider": "capistrano",
+    "auto_merge": false,
+    "repository": "ucsdlib/billing-ill",
+    "environments": ["pontos","staging","production"]
+  },
   "deploybot": {
     "provider": "capistrano",
     "auto_merge": false,
