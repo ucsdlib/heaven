@@ -161,6 +161,7 @@ module Heaven
       end
 
       def run!
+        Rails.logger.info "Timeout::: #{timeout}"
         Timeout.timeout(timeout) do
           start_deployment_timeout!
           setup
