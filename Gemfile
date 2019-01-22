@@ -1,4 +1,4 @@
-ruby "2.2.3"
+ruby "2.3.7"
 source "https://rubygems.org"
 
 gem "rails",    "~>4.2.2"
@@ -19,10 +19,10 @@ gem "aws-sdk"
 #gem "capistrano", "2.9.0"
 
 # Deploy with Capistrano
-gem 'capistrano', '~> 3.4.0'
-gem 'capistrano-rails', '~> 1.1.6'
-gem 'capistrano-rbenv', '~> 2.0.4'
-gem 'capistrano-bundler'
+gem 'capistrano', '~> 3.11.0'
+gem 'capistrano-bundler', '1.5.0'
+gem 'capistrano-rails', '~> 1.4.0'
+gem 'capistrano-rbenv', '~> 2.1.4'
 
 # Notifiers
 gem "hipchat"
